@@ -1,0 +1,19 @@
+{
+  "name": "lf-lex",
+  "version": "0.1.0",
+  "description": "Lambda Formation project",
+  "license": "Apache-2.0",
+  "keywords": [
+    "lamba-formation"
+  ],
+  "scripts": {
+    "dist": "zip -FSr dist/lambda.zip * -x \"*.git*\" \"dist/*\""
+  },
+  "dependencies": {
+    "aws-sdk": "^2.86.0",
+    "cfn-responder": "^1.0.2",
+    "lambda-formation": "^0.1.11",
+    "lodash": "^4.17.4",
+    "shortid": "^2.2.8"
+  }
+}
