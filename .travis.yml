@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 6.10.2
+- 4.3.2
+before_deploy:
+  - npm run dist
+  - mkdir -p ./dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
+  - mv ./dist/lambda.zip /dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: lambda-formation.us-east-1
+  region: us-east-1
+  upload-dir: lf-lex
+  local_dir: dist
+
