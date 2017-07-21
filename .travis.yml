@@ -3,6 +3,7 @@ node_js:
 - 6.10.2
 - 4.3.2
 before_deploy:
+  - mkdir dist
   - npm run dist
   - mkdir -p ./dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
   - mv ./dist/lambda.zip /dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
