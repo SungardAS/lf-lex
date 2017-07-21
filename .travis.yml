@@ -5,8 +5,8 @@ node_js:
 before_deploy:
   - mkdir dist
   - npm run dist
-  - mkdir -p ./dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
-  - mv ./dist/lambda.zip /dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
+  - mkdir -p ./dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/$TRAVIS_NODE_VERSION
+  - mv ./dist/lambda.zip ./dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/$TRAVIS_NODE_VERSION
 deploy:
   provider: s3
   access_key_id: $AWS_ACCESS_KEY_ID
