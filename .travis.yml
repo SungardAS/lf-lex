@@ -14,5 +14,6 @@ deploy:
   bucket: lambda-formation.us-east-1
   region: us-east-1
   upload-dir: lf-lex
+  skip_cleanup: true
   local_dir: dist
 
