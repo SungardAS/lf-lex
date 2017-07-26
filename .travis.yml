@@ -6,10 +6,10 @@ before_deploy:
   - mkdir -p dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
   - npm run dist
   - |
-    aws cloudformation package
-      --template-file particles/cftemplates/lf-lex.template.yml
-      --s3-bucket lambda-formation.$AWS_REGION
-      --s3-prefix lf-lex/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID
+    aws cloudformation package \
+      --template-file particles/cftemplates/lf-lex.template.yml \
+      --s3-bucket lambda-formation.$AWS_REGION \
+      --s3-prefix lf-lex/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID \
       --output-template-file dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml
   - rm dist/lambda.zip
   #- mkdir -p ./dist/builds
