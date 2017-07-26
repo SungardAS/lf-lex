@@ -15,3 +15,7 @@ Resources:
              Action:
                - lex:*
              Resource: '*'
+Outputs:
+  Arn:
+    Description: Arn for the lambda-formation Lex function
+    Value: !ref LambdaFormationLex
