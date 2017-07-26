@@ -11,12 +11,12 @@ before_deploy:
       --s3-bucket lambda-formation.$AWS_REGION \
       --s3-prefix lf-lex/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID \
       --output-template-file dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml
-  - rm dist/lambda.zip
+  - mv dist/lambda.zip dist/lf-lex.zip
   #- mkdir -p ./dist/builds
   #- mkdir -p ./dist/releases
   #- mv ./dist/lambda.zip ./dist/builds/lf-lex-$TRAVIS_COMMIT-$TRAVIS_BUILD_ID-$TRAVIS_NODE_VERSION.zip
-  #- if [ -n $TRAVIS_TAG ]; then mv ./dist/lambda.zip ./dist/builds/lf-lex-$TRAVIS_TAG-$TRAVIS_NODE_VERSION.zip; fi
-  #- if [ -n $TRAVIS_BRANCH ]; then mv ./dist/lambda.zip ./dist/builds/lf-lex-$TRAVIS_BRANCH-$TRAVIS_NODE_VERSION.zip; fi
+  - if [ -n $TRAVIS_TAG ]; then cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml dist/releases/$TRAVIS_TAG/latest/lf-lex.template.yml; fi
+  - if [ -n $TRAVIS_BRANCH ]; then cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml dist/branches/$TRAVIS_BRANCH/latest/lf-lex.template.yml; fi
 env:
   - AWS_REGION=us-east-1
 deploy:
