@@ -18,4 +18,4 @@ Resources:
 Outputs:
   Arn:
     Description: Arn for the lambda-formation Lex function
-    Value: !ref LambdaFormationLex
+    Value: !Ref LambdaFormationLex
