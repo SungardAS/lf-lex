@@ -15,8 +15,20 @@ before_deploy:
   #- mkdir -p ./dist/builds
   #- mkdir -p ./dist/releases
   #- mv ./dist/lambda.zip ./dist/builds/lf-lex-$TRAVIS_COMMIT-$TRAVIS_BUILD_ID-$TRAVIS_NODE_VERSION.zip
-  - if [ -n $TRAVIS_TAG ]; then cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml dist/releases/$TRAVIS_TAG/latest/lf-lex.template.yml; fi
-  - if [ -n $TRAVIS_BRANCH ]; then cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml dist/branches/$TRAVIS_BRANCH/latest/lf-lex.template.yml; fi
+  - |
+    if [ -z ${TRAVIS_TAG+x} ]; \
+      then \
+        mkdir -p dist/releases/$TRAVIS_TAG/latest \
+        && cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml \
+          dist/releases/$TRAVIS_TAG/latest/lf-lex.template.yml; \
+    fi
+  - |
+    if [ -z ${TRAVIS_BRANCH+x} ]; \
+      then \
+        mkdir -p dist/branches/$TRAVIS_BRANCH/latest \
+        && cp dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml \
+          dist/branches/$TRAVIS_BRANCH/latest/lf-lex.template.yml; \
+    fi
 env:
   - AWS_REGION=us-east-1
 deploy:
