@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "test": "true",
-    "dist": "zip -FSr dist/lambda.zip * -x \"*.git*\" \"dist/*\""
+    "dist": "zip -FSr dist/lambda.zip * -x \"*.git*\" \"dist/*\" \"particles/*\""
   },
   "dependencies": {
     "aws-sdk": "^2.86.0",
