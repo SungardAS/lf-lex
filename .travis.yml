@@ -11,7 +11,6 @@ before_deploy:
       --s3-bucket lambda-formation.$AWS_REGION \
       --s3-prefix lf-lex/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID \
       --output-template-file dist/builds/$TRAVIS_COMMIT/$TRAVIS_BUILD_ID/lf-lex.template.yml
-  - mv dist/lambda.zip dist/lf-lex.zip
   #- mkdir -p ./dist/builds
   #- mkdir -p ./dist/releases
   #- mv ./dist/lambda.zip ./dist/builds/lf-lex-$TRAVIS_COMMIT-$TRAVIS_BUILD_ID-$TRAVIS_NODE_VERSION.zip
