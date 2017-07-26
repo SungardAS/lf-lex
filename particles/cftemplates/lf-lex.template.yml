@@ -5,7 +5,7 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: index.handler
-      Runtime: nodejs6.10.2
+      Runtime: nodejs6.10
       CodeUri: '../../dist/lambda.zip'
       Policies:
         - AWSLambdaExecute # Managed Policy
